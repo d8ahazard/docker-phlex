@@ -5,6 +5,9 @@ apk upgrade --update && apk add \
   coreutils \
   libmcrypt-dev \
   php5-mcrypt \
+  php7-curl \
+  curl \
+  curl-dev \
   && docker-php-ext-configure mcrypt \
   --with-mcrypt \
   && docker-php-ext-install  mcrypt \
