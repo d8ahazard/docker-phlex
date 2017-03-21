@@ -1,13 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-# install Mcrypt
-apk add --update php5-mcrypt
 
-RUN apk upgrade --update && apk add \
+apk upgrade --update && apk add \
   coreutils \
   libmcrypt-dev \
   php5-mcrypt \
-## install mcrypt
   && docker-php-ext-configure mcrypt \
   --with-mcrypt \
   && docker-php-ext-install  mcrypt \
