@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.nginx:latest
+FROM lsiobase/alpine.nginx:7.1.1
 MAINTAINER Digitalhigh
 
 # set version label
