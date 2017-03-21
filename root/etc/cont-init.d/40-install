@@ -1,5 +1,15 @@
 #!/usr/bin/with-contenv bash
 
+# install Mcrypt
+apk add --update php5-mcrypt
+
+FROM php:5-fpm-alpine
+RUN apk upgrade --update && apk add \
+  coreutils \
+  libmcrypt-dev \
+  php5-mcrypt \
+&& docker-php-ext-install -j$(nproc) iconv mcrypt \
+
 # fetch site
 [[ ! -d /config/www/phlex/.git ]] && \
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
