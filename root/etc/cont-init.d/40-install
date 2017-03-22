@@ -5,7 +5,9 @@ apk upgrade --update && apk add \
   coreutils \
   libmcrypt-dev \
   php5-mcrypt \
+  php5-sockets \
   php7-curl \
+  php5-curl \
   curl \
   curl-dev \
   && docker-php-ext-configure mcrypt \
@@ -13,7 +15,7 @@ apk upgrade --update && apk add \
   && docker-php-ext-install  mcrypt \
   && apk del \
   libmcrypt-dev \
-	
+
 # fetch site
 [[ ! -d /config/www/phlex/.git ]] && \
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
