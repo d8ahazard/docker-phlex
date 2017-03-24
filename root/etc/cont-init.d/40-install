@@ -6,6 +6,7 @@ apk upgrade --update && apk add \
   libmcrypt-dev \
   php5-mcrypt \
   php5-sockets \
+  php-sockets \
   php7-curl \
   php5-curl \
   curl \
