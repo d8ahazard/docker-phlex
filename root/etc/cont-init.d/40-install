@@ -9,7 +9,6 @@ apk upgrade --update && apk add \
   php7-curl \
   php5-curl \
   php5-fpm \
-  php7-fpm \
   curl \
   curl-dev \
   && docker-php-ext-configure mcrypt \
