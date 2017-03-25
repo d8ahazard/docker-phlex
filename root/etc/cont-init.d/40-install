@@ -21,7 +21,7 @@ apk upgrade --update && apk add \
 [[ ! -d /config/www/Phlex/.git ]] && \
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
 
-cd /config/www/Phles
+cd /config/www/Phlex
 git pull
 
 # permissions
