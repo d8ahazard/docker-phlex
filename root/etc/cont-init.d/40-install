@@ -8,6 +8,9 @@ apk upgrade --update && apk add \
   php7-curl \
   curl \
   curl-dev \
+  php7-sockets \
+  && docker-php-ext-install sockets \
+  && docker-php-ext-enable sockets \
   && docker-php-ext-configure mcrypt \
   --with-mcrypt \
   && docker-php-ext-install  mcrypt \
