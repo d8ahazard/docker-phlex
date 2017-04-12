@@ -17,10 +17,14 @@ apk upgrade --update && apk add \
   && apk del \
   libmcrypt-dev \
 	
-# fetch site
+# fetch site
 [[ ! -d /config/www/phlex/.git ]] && \
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
 
-# permissions
+
+cd /config/www/Phlex
+git pull
+
+# permissions
 chown -R abc:abc \
-	/config/www
+	/config/www	
