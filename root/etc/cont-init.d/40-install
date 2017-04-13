@@ -24,6 +24,9 @@ apk upgrade --update && apk add \
 
 cd /config/www/Phlex
 git pull
+ln -sf /dev/stdout /config/www/Phlex/Phlex.log
+ln -sf /dev/stderr /config/www/Phlex/Phlex_error.log
+
 
 # permissions
 chown -R abc:abc \
