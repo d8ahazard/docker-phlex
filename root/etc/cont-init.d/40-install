@@ -1,9 +1,10 @@
 #!/usr/bin/with-contenv bash
+
+apk upgrade --update
 	
 # fetch site
 [[ ! -d /config/www/Phlex/.git ]] && \
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
-
 
 cd /config/www/Phlex
 git pull

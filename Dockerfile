@@ -25,7 +25,7 @@ RUN apk upgrade --update && apk add \
 	&& docker-php-ext-enable sockets \
 	&& docker-php-ext-configure mcrypt \
 	--with-mcrypt \
-	&& docker-php-ext-install  mcrypt \
+	&& docker-php-ext-install mcrypt \
 	&& apk del \
 	libmcrypt-dev \
 	
