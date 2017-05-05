@@ -13,4 +13,3 @@ COPY root/ /
 EXPOSE 80
 VOLUME /config
 
-ADD default /config/nginx/site-confs/default
