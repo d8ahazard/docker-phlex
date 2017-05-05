@@ -1,27 +1,30 @@
 #!/usr/bin/with-contenv bash
 
-
-apk upgrade --update && apk add \
-  coreutils \
-  libmcrypt-dev \
-  php5-mcrypt \
-  php7-curl \
-  curl \
-  curl-dev \
-  php5-fpm \
-  php5-sockets \
-  php5-json \
-  php7-sockets \
-  php7-json \
-  php7-fpm
+apk update && \
+apk upgrade && apk add --update libressl libressl-dev libssl1.0 supervisor redis \
+	coreutils \
+	libmcrypt-dev \
+    php7 \
+    php7-fpm \
+    php7-zlib \
+    php7-phar \
+    php7-openssl \
+    php7-common \
+    php7-dev \
+    php7-redis \
+    php7-curl \
+    php7-json \
+	php7-mcrypt \
+	php7-curl \
+	curl-dev 
   
 docker-php-ext-install sockets \
-  && docker-php-ext-enable sockets \
-  && docker-php-ext-configure mcrypt \
-  --with-mcrypt \
-  && docker-php-ext-install mcrypt \
-  && apk del \
-  libmcrypt-dev \
+	&& docker-php-ext-enable sockets \
+	&& docker-php-ext-configure mcrypt \
+	--with-mcrypt \
+	&& docker-php-ext-install mcrypt \
+	&& apk del \
+	libmcrypt-dev \
 	
 # fetch site
 [[ ! -d /config/www/phlex/.git ]] && \
