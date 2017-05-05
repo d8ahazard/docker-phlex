@@ -8,12 +8,19 @@ apk upgrade --update && apk add \
   php7-curl \
   curl \
   curl-dev \
+  php5-fpm \
+  php5-sockets \
+  php5-json \
+  php-sockets \
   php7-sockets \
-  && docker-php-ext-install sockets \
+  php7-json \
+  php7-fpm
+  
+docker-php-ext-install sockets \
   && docker-php-ext-enable sockets \
   && docker-php-ext-configure mcrypt \
   --with-mcrypt \
-  && docker-php-ext-install  mcrypt \
+  && docker-php-ext-install mcrypt \
   && apk del \
   libmcrypt-dev \
 	
@@ -24,10 +31,9 @@ apk upgrade --update && apk add \
 
 cd /config/www/Phlex
 git pull
-ln -sf /dev/stdout /config/www/Phlex/Phlex.log
-ln -sf /dev/stderr /config/www/Phlex/Phlex_error.log
-
 
 # permissions
 chown -R abc:abc \
 	/config/www	
+	
+
