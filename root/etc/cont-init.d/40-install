@@ -1,24 +1,23 @@
 #!/usr/bin/with-contenv bash
 
 apk update && \
-apk upgrade && apk add --update libressl libressl-dev libssl1.0 supervisor redis \
+apk upgrade && apk add --update libressl libressl-dev libssl1.0 supervisor \
 	coreutils \
 	libmcrypt-dev \
-    php7 \
-    php7-fpm \
-    php7-zlib \
-    php7-phar \
-    php7-openssl \
-    php7-common \
-    php7-dev \
-    php7-redis \
-    php7-curl \
-    php7-json \
+    	php7 \
+    	php7-fpm \
+    	php7-phar \
+    	php7-openssl \
+    	php7-common \
+    	php7-dev \
+    	php7-redis \
+    	php7-curl \
+    	php7-json \
 	php7-mcrypt \
 	php7-curl \
 	curl-dev 
   
-docker-php-ext-install sockets \
+  	&& docker-php-ext-install sockets \
 	&& docker-php-ext-enable sockets \
 	&& docker-php-ext-configure mcrypt \
 	--with-mcrypt \
