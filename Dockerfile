@@ -1,5 +1,4 @@
-FROM nginx:<version>
-
+FROM nginx:latest
 MAINTAINER Digitalhigh
 
 # set version label
