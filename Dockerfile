@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM million12/nginx-php:latest
 MAINTAINER Digitalhigh
 
 # set version label
