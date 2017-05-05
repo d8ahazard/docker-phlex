@@ -1,4 +1,4 @@
-FROM million12/nginx-php:latest
+FROM wodby/nginx-php-7-alpine:latest
 MAINTAINER Digitalhigh
 
 # set version label
