@@ -13,5 +13,4 @@ COPY root/ /
 EXPOSE 80
 VOLUME /config
 
-RUN rm -v /config/nginx/site-confs/default
 ADD default /config/nginx/site-confs/default
