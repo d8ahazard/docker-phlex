@@ -6,8 +6,7 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-RUN apk upgrade -U && \
-	apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
+RUN apk upgrade --update && apk add \
 	coreutils \
 	libmcrypt-dev \
 	php7 \
@@ -28,7 +27,7 @@ RUN apk upgrade -U && \
 	--with-mcrypt \
 	&& docker-php-ext-install  mcrypt \
 	&& apk del \
-	libmcrypt-dev	
+	libmcrypt-dev \
 	
 # Install composer global bin
 RUN curl -sS https://getcomposer.org/installer | php \
