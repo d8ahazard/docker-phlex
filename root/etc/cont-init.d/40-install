@@ -11,7 +11,6 @@ apk upgrade --update && apk add \
   php5-fpm \
   php5-sockets \
   php5-json \
-  php-sockets \
   php7-sockets \
   php7-json \
   php7-fpm
