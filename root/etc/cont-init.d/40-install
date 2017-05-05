@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 	
 # fetch site
-[[ ! -d /config/www/phlex/.git ]] && \
+[[ ! -d /config/www/Phlex/.git ]] && \
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
 
 
