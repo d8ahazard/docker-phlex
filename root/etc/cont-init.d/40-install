@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 apk update && \
-apk upgrade && apk add --update libressl libressl-dev libssl1.0 supervisor \
+apk upgrade && apk add --update libressl libressl-dev libssl1.0 \
 	coreutils \
 	libmcrypt-dev \
 	php7 \
@@ -10,18 +10,13 @@ apk upgrade && apk add --update libressl libressl-dev libssl1.0 supervisor \
 	php7-openssl \
 	php7-common \
 	php7-dev \
-	php7-curl \
+	apk add --no-cache \
+ 	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-json \
-	php7-mcrypt \
 	php7-curl \
-	curl-dev \
-	&& docker-php-ext-install sockets \
-	&& docker-php-ext-enable sockets \
-	&& docker-php-ext-configure mcrypt \
-	--with-mcrypt \
-	&& docker-php-ext-install mcrypt \
-	&& apk del \
-	libmcrypt-dev \
+	php7-mcrypt \
+	php7-sockets \
+	php7-xml && \
 	
 # fetch site
 [[ ! -d /config/www/phlex/.git ]] && \
