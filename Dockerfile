@@ -1,4 +1,4 @@
-FROM richarvey/nginx-php-fpm:latest
+FROM linuxserver/nginx:latest
 MAINTAINER Digitalhigh
 
 # set version label
@@ -10,7 +10,7 @@ LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}
 COPY root/ /
 
 # ports and volumes
-EXPOSE 5666
-EXPOSE 5667
+EXPOSE 80
+EXPOSE 443
 VOLUME /config
 
