@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 apk upgrade --update
+apk add iptables
 	
 # fetch site
 [[ ! -d /config/www/Phlex/.git ]] && \

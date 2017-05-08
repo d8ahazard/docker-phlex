@@ -8,7 +8,6 @@ docker create \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
   -e TZ=<timezone> \
-  -p 5666:5666 -p 5667:5667 \
   digitalhigh/phlex
 ```
 
@@ -21,9 +20,9 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 
 * `-v /config` - Where muximux should store its files
-* `-e PGID` for GroupID - see below for explanation
-* `-e PUID` for UserID - see below for explanation
-* `-e TZ` for timezone setting, eg Europe/London
+* `-e PGID` for GroupID (optional) - see below for explanation
+* `-e PUID` for UserID (optional) - see below for explanation
+* `-e TZ` for timezone setting (optional), eg Europe/London
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it muximux /bin/bash`.
 
