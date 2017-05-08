@@ -13,4 +13,13 @@ git pull
 chown -R abc:abc \
 	/config/www	
 	
-
+ip link set eth0 multicast on
+echo 1 >/proc/sys/net/ipv4/ip_forwarding
+sysctl -w net.ipv4.conf.all.mc_forwarding=1
+sysctl -w net.ipv4.conf.eth0.rp_filter=0
+sysctl -p
+iptables -I INPUT -d 224.0.0.0/4 -j ACCEPT
+iptables -I FORWARD -d 224.0.0.0/4 -j ACCEPT
+iptables -I INPUT -d 224.0.0.251/4 -j ACCEPT
+iptables -I FORWARD -d 224.0.0.251/4 -j ACCEPT
+route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0 
