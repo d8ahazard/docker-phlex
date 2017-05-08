@@ -8,7 +8,9 @@ docker create --privileged \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
   -e TZ=<timezone> \
+  -p 5666:5666 -p 5667:5667 \
   digitalhigh/phlex
+  
 ```
 
 ## Parameters

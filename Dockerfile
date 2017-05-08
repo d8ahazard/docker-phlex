@@ -10,6 +10,8 @@ LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}
 COPY root/ /
 
 # ports and volumes
+EXPOSE 5666
+EXPOSE 5667
 VOLUME /config
 
 
