@@ -2,9 +2,18 @@
 
 apk upgrade --update
 apk add iptables
-	
-# fetch site
+
+# set networking for multicast, fetch site
 [[ ! -d /config/www/Phlex/.git ]] && \
+	ip link set eth0 multicast on
+	sysctl -w net.ipv4.conf.all.mc_forwarding=1
+	sysctl -w net.ipv4.conf.eth0.rp_filter=0
+	sysctl -p
+	iptables -I INPUT -d 224.0.0.0/4 -j ACCEPT
+	iptables -I FORWARD -d 224.0.0.0/4 -j ACCEPT
+	iptables -I INPUT -d 224.0.0.251/4 -j ACCEPT
+	iptables -I FORWARD -d 224.0.0.251/4 -j ACCEPT
+	ip route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0 
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
 
 cd /config/www/Phlex
@@ -14,12 +23,4 @@ git pull
 chown -R abc:abc \
 	/config/www	
 	
-ip link set eth0 multicast on
-sysctl -w net.ipv4.conf.all.mc_forwarding=1
-sysctl -w net.ipv4.conf.eth0.rp_filter=0
-sysctl -p
-iptables -I INPUT -d 224.0.0.0/4 -j ACCEPT
-iptables -I FORWARD -d 224.0.0.0/4 -j ACCEPT
-iptables -I INPUT -d 224.0.0.251/4 -j ACCEPT
-iptables -I FORWARD -d 224.0.0.251/4 -j ACCEPT
-route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0 
+
