@@ -3,7 +3,7 @@
 
 ```
 docker create --privileged \
-  --name=Phlex \
+  --name=phlex \
   --net=host \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
@@ -14,12 +14,12 @@ docker create --privileged \
 
 ## Parameters
 
-By default, Phlex is set to listen on ports 5666 and 5667 - these can be modified by editing the file /config/
+By default, Phlex is set to listen on ports 5666 and 5667 (SSL) - these can be modified by editing the file `/config/`
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
 
 
-* `-v /config` - Where muximux should store its files
+* `-v /config` - Where Phlex should store its files
 * `-e PGID` for GroupID (optional) - see below for explanation
 * `-e PUID` for UserID (optional) - see below for explanation
 * `-e TZ` for timezone setting (optional), eg Europe/London
