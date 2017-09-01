@@ -1,6 +1,6 @@
 server {
-	listen 5666 default_server;
-	listen 5667 ssl;
+	listen ${HTTPPORT} default_server;
+	listen ${HTTPSPORT} ssl;
 
 	root /config/www/Phlex;
 	index index.html index.htm index.php;
@@ -19,7 +19,7 @@ server {
 	location ~ \.php$ {
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
 		# With php5-cgi alone:
-		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_pass 127.0.0.1:${FASTCGIPORT};
 		# With php5-fpm:
 		#fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_index index.php;

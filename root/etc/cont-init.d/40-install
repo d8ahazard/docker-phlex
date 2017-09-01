@@ -1,10 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-apk upgrade --update
-apk add iptables
-
 # check/set multicast
-[[ ! -e /config/updated ]] && \
+if [ ! -e /config/updated ]; then
+    ip link add dummy0 type dummy >/dev/null
+    if [ $? -eq 0 ]; then
+        echo "Running in privileged mode, setting multicast variables."
 	ip link set eth0 multicast on
 	sysctl -w net.ipv4.conf.all.mc_forwarding=1
 	sysctl -w net.ipv4.conf.eth0.rp_filter=0
@@ -13,13 +13,22 @@ apk add iptables
 	iptables -I FORWARD -d 224.0.0.0/4 -j ACCEPT
 	iptables -I INPUT -d 224.0.0.251/4 -j ACCEPT
 	iptables -I FORWARD -d 224.0.0.251/4 -j ACCEPT
-	ip route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0 
+	ip route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0
 	touch /config/updated
+    else
+        echo "You need to execute this container in privileged mode at least once!"
+    fi
+else
+    echo "Multicast variables have been set, you can disable privileged mode now."
+fi
 
 # fetch site
-[[ ! -d /config/www/Phlex/.git ]] && \
+if [ ! -d /config/www/Phlex/.git ]; then
+    echo "No repo found, pulling."
 	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
+fi
 
+echo "Updating Phlex."
 cd /config/www/Phlex
 git pull
 
