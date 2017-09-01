@@ -7,6 +7,7 @@ ARG VERSION
 ARG HTTPPORT=5666
 ARG HTTPSPORT=5667
 ARG FASTCGIPORT=9000
+ARG PORTS='$HTTPORT:$HTTPSPORT:$FASTCGIPORT'
 
 LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
@@ -15,7 +16,8 @@ COPY root /
 
 RUN apk update \
     && apk --no-cache add gettext iptables \
-    && envsubst < /etc/templates/default > /defaults/default
+    && envsubst "$PORTS" < /etc/templates/default > /defaults/default \
+    && chmod 777 /defaults/default
     
 # ports and volumes
 VOLUME /config
