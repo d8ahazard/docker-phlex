@@ -3,7 +3,7 @@
 
 ```
 docker create --privileged \
-  --name=Phlex \
+  --name=phlex \
   --net=host \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
@@ -16,21 +16,19 @@ docker create --privileged \
 
 By default, Phlex is set to listen on ports 5666 and 5667 - these can be modified by editing the file /config/
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
 
-
-* `-v /config` - Where muximux should store its files
+* `-v /config` - Where phlex should store its files
 * `-e HTTPPORT` (optional) Port to serve http web traffic from. (default is 5666)
 * `-e HTTPSPORT` (optional) Port to serve https traffic from. (default is 5667)
 * `-e FASTCGIPORT` (optional) Port to use for cast traffic (default is 9000)
 * `-e TZ` for timezone setting (optional), eg Europe/London
 
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it muximux /bin/bash`.
+It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it phlex /bin/bash`.
 
 ## Setting up the application
 
 Find the web interface at `<your-ip>:5666`, set apps you wish to use with Phlex via the webui.
-
 
 ## Info
 
