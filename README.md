@@ -26,7 +26,7 @@ By default, Phlex is set to listen on ports 5666 and 5667 - these can be modifie
 * `-e FASTCGIPORT` (optional) Port to use for cast traffic (default is 9000)
 * `-e TZ` for timezone setting (optional), eg Europe/London
 
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it muximux /bin/bash`.
+It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it Phlex /bin/bash`.
 
 ## Setting up the application
 
@@ -36,7 +36,7 @@ Find the web interface at `<your-ip>:5666`, set apps you wish to use with Phlex 
 ## Info
 
 * Shell access whilst the container is running: `docker exec -it Phlex /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f phlex`
+* To monitor the logs of the container in realtime: `docker logs -f Phlex`
 
 * container version number 
 
