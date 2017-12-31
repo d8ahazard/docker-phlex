@@ -33,7 +33,7 @@ cd /config/www/Phlex
 git pull
 
 # permissions
-chown -R abc:abc \
-	/config/www	
+chown -R abc:abc /config/www
+chmod -R 777 /config
 	
 
