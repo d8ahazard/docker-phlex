@@ -36,7 +36,7 @@ Find the web interface at `<your-ip>:5666`, set apps you wish to use with Phlex 
 ## Info
 
 * Shell access whilst the container is running: `docker exec -it Phlex /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f phlex`
+* To monitor the logs of the container in realtime: `docker logs -f Phlex`
 
 * container version number 
 
