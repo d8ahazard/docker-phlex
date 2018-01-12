@@ -35,5 +35,6 @@ git pull
 # permissions
 chown -R abc:abc /config/www
 chmod -R 777 /config
+git config core.fileMode false
 	
 
