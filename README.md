@@ -8,6 +8,7 @@ docker create --name=Phlex \
   -e HTTPPORT=5666 \
   -e HTTPSPORT=5667 \
   -e FASTCGIPORT=9000 \
+  -e BRANCH=master \
   --privileged \
   digitalhigh/phlex
   
@@ -24,6 +25,7 @@ By default, Phlex is set to listen on ports 5666 and 5667 - these can be modifie
 * `-e HTTPPORT` (optional) Port to serve http web traffic from. (default is 5666)
 * `-e HTTPSPORT` (optional) Port to serve https traffic from. (default is 5667)
 * `-e FASTCGIPORT` (optional) Port to use for cast traffic (default is 9000)
+* `-e BRANCH` (optional) Set to 'beta' to play with the new hotness!
 * `-e TZ` for timezone setting (optional), eg Europe/London
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it Phlex /bin/bash`.
