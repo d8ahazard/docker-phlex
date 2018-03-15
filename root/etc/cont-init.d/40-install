@@ -25,7 +25,7 @@ fi
 # fetch site
 if [ ! -d /config/www/Phlex/.git ]; then
     echo "No repo found, pulling."
-	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
+	git clone -b ${BRANCH} https://github.com/d8ahazard/Phlex /config/www/Phlex
 fi
 
 echo "Updating Phlex."
@@ -35,5 +35,6 @@ git pull
 # permissions
 chown -R abc:abc /config/www
 chmod -R 777 /config
+git config core.fileMode false
 	
 
