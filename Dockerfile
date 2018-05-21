@@ -4,11 +4,9 @@ MAINTAINER Digitalhigh
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-ARG HTTPPORT=5666
-ARG HTTPSPORT=5667
-ARG FASTCGIPORT=9000
-ARG BRANCH='master'
-ARG PORTS='$HTTPPORT:$HTTPSPORT:$FASTCGIPORT'
+ENV HTTPPORT=5666
+ENV HTTPSPORT=5667
+ENV FASTCGIPORT=9000
 
 LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
@@ -16,13 +14,10 @@ LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}
 COPY root /
 
 RUN apk update \
-    && apk --no-cache add gettext iptables \
-    && envsubst "$PORTS" < /etc/templates/default > /defaults/default \
+    && apk --no-cache add gettext
+RUN envsubst < /etc/templates/default > /defaults/default \
     && chmod 777 /defaults/default
-    
+RUN mkdir -p /run/nginx
+
 # ports and volumes
 VOLUME /config
-
-
-
-

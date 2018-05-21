@@ -3,8 +3,7 @@
 
 ```
 docker create \
-  --name=phlex \
-  --net=host \
+  --name=FlexTV \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
   -e TZ=<timezone> \
@@ -12,8 +11,6 @@ docker create \
   -e HTTPPORT=5666 \
   -e HTTPSPORT=5667 \
   -e FASTCGIPORT=9000 \
-  -e BRANCH=master \
-  --privileged \
   digitalhigh/phlex
 ```
 
@@ -23,12 +20,13 @@ By default, Phlex is set to listen on ports 5666 and 5667 - these can be modifie
 
 The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
 
-* `-v /config` - Where phlex should store its files
+* `-v /config` - Where Flex TV should store its files
 * `-e HTTPPORT` (optional) Port to serve http web traffic from. (default is 5666)
 * `-e HTTPSPORT` (optional) Port to serve https traffic from. (default is 5667)
 * `-e FASTCGIPORT` (optional) Port to use for cast traffic (default is 9000)
-* `-e BRANCH` (optional) Set to 'beta' to play with the new hotness!
-* `-e TZ` for timezone setting (optional), eg Europe/London
+* `-e TZ` for timezone setting (optional), uses Linux Default convention - eg Europe/London
+* `-e PGID` (optional) System GID to run the container as.
+* `-e PUID` (optional) System UID to run the container as.
 
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it phlex /bin/bash`.
@@ -39,12 +37,12 @@ Find the web interface at `<your-ip>:5666`, set apps you wish to use with Phlex 
 
 ## Info
 
-* Shell access whilst the container is running: `docker exec -it Phlex /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f Phlex`
+* Shell access whilst the container is running: `docker exec -it FlexTV /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f FlexTV`
 
 * container version number 
 
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' Phlex`
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' FlexTV`
 
 * image version number
 

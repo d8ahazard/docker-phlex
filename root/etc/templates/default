@@ -1,5 +1,6 @@
 server {
 	listen ${HTTPPORT} default_server;
+	listen [::]:${HTTPPORT} default_server;
 	listen ${HTTPSPORT} ssl;
 
 	root /config/www/Phlex;
