@@ -8,9 +8,6 @@ docker create \
   -e PGID=<gid> -e PUID=<uid>  \
   -e TZ=<timezone> \
   -p 5666:5666 -p 5667:5667 \
-  -e HTTPPORT=5666 \
-  -e HTTPSPORT=5667 \
-  -e FASTCGIPORT=9000 \
   digitalhigh/phlex
 ```
 
@@ -21,9 +18,6 @@ By default, Phlex is set to listen on ports 5666 and 5667 - these can be modifie
 The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
 
 * `-v /config` - Where Flex TV should store its files
-* `-e HTTPPORT` (optional) Port to serve http web traffic from. (default is 5666)
-* `-e HTTPSPORT` (optional) Port to serve https traffic from. (default is 5667)
-* `-e FASTCGIPORT` (optional) Port to use for cast traffic (default is 9000)
 * `-e TZ` for timezone setting (optional), uses Linux Default convention - eg Europe/London
 * `-e PGID` (optional) System GID to run the container as.
 * `-e PUID` (optional) System UID to run the container as.
