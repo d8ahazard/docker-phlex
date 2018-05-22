@@ -1,6 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# copy php ini for user editing
-[[ ! -e "/config/php/php.ini" ]] && \
-	cp /etc/php7/php.ini /config/php/php.ini
-cp /config/php/php.ini /etc/php7/php.ini

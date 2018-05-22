@@ -1,24 +1,17 @@
-#!/usr/bin/with-contenv bash
-
-# Make Flex TV Directory
-if [ ! -d /config/www/Phlex ]; then
-    echo "Creating Flex TV Directory..."
-    mkdir -p /config/www/Phlex
-fi
-
+#!/bin/sh
+echo "========================================================================"
+echo "########################## FLEX TV INSTALLER ###########################"
 # fetch site
-if [ ! -d /config/www/Phlex/.git ]; then
+if [ ! -d /config/www/.git ]; then
     echo "No repo found, pulling..."
-	git clone https://github.com/d8ahazard/Phlex /config/www/Phlex
+    rm -rf /config/www/*
+	git clone https://github.com/d8ahazard/Phlex /config/www
 fi
 
 echo "Updating Flex TV..."
-cd /config/www/Phlex
-git pull
-
-# permissions
-chown -R abc:abc /config/www
-chmod -R 777 /config
+cd /config/www
+git fetch && git pull
+chmod 777 /config/www
 git config core.fileMode false
-	
 
+echo "########################## FLEX TV INSTALLER ###########################"
