@@ -11,7 +11,7 @@ fi
 echo "Updating Flex TV..."
 cd /config/www
 git fetch && git pull
-chmod 777 /config/www
+chmod -R 777 /config/www
 git config core.fileMode false
 
 echo "########################## FLEX TV INSTALLER ###########################"
